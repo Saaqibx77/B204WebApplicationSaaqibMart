@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SaaqibMart — Smart Phones, Smart Prices</title>
+    <meta
+      name="description"
+      content="Shop the latest smartphones at unbeatable prices. Samsung, iPhone, Xiaomi, OnePlus and more at SaaqibMart."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">Saaqib<span>Mart</span></a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
+          🛒 <span id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
+    </nav>
+
+    <header id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-tag">📱 Latest Smartphones</p>
+        <h1>Your Next Phone Is Here</h1>
+        <p class="hero-sub">
+          Top brands, best prices, and fast delivery — find the perfect
+          smartphone for you.
+        </p>
+        <a href="#products" class="btn btn-primary">Browse Phones</a>
+      </div>
+    </header>
+
+    <section id="products" class="section">
+      <h2 class="section-title">Top Selling Phones</h2>
+      <p class="section-sub">
+        The most popular smartphones picked by our customers.
+      </p>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section id="about" class="section section-alt">
+      <div class="about-wrapper">
+        <div class="about-text">
+          <h2 class="section-title" style="text-align: left">
+            Why SaaqibMart?
+          </h2>
+          <p>
+            We make buying your next smartphone simple, affordable, and
+            trustworthy. Every phone comes with a manufacturer warranty and our
+            own quality guarantee.
+          </p>
+          <ul class="about-list">
+            <li>100% genuine products</li>
+            <li>Same-day dispatch on all orders</li>
+            <li>Free shipping on orders over €100</li>
+            <li>14-day easy returns</li>
+          </ul>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">25k+</span
+            ><span class="stat-label">Happy Customers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">80+</span
+            ><span class="stat-label">Phone Models</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">5</span
+            ><span class="stat-label">Years Trusted</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-sub">
+        Have a question about a phone or your order? We'd love to help.
+      </p>
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="nameInput" placeholder="Your Name" required />
+        <input type="email" id="emailInput" placeholder="Your Email" required />
+        <textarea
+          id="messageInput"
+          rows="4"
+          placeholder="Your Message"
+          required
+        ></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 SaaqibMart. All rights reserved.</p>
+    </footer>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button
+          class="cart-close"
+          onclick="toggleCart()"
+          aria-label="Close cart"
+        >
+          ✕
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty" id="cartEmpty">Your cart is empty.</p>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cartTotal">€0.00</span>
+        </div>
+        <button
+          class="btn btn-primary cart-checkout-btn"
+          onclick="openCheckout()"
+        >
+          Proceed to Checkout
+        </button>
+      </div>
+    </aside>
+
+    <div
+      class="modal-overlay"
+      id="checkoutOverlay"
+      onclick="closeCheckout()"
+    ></div>
+    <div class="modal" id="checkoutModal">
+      <div class="checkout-step" id="stepShipping">
+        <h2>Shipping Details</h2>
+        <form id="shippingForm" onsubmit="goToPayment(event)">
+          <input type="text" id="shipName" placeholder="Full Name" required />
+          <input
+            type="email"
+            id="shipEmail"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            type="text"
+            id="shipAddress"
+            placeholder="Street Address"
+            required
+          />
+          <div class="form-row">
+            <input type="text" id="shipCity" placeholder="City" required />
+            <input
+              type="text"
+              id="shipZip"
+              placeholder="Postal Code"
+              required
+            />
+          </div>
+          <input type="text" id="shipCountry" placeholder="Country" required />
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 0.5rem"
+          >
+            Continue to Payment
+          </button>
+        </form>
+      </div>
+
+      <div class="checkout-step hidden" id="stepPayment">
+        <h2>Payment</h2>
+        <div class="order-summary" id="orderSummary"></div>
+        <form id="paymentForm" onsubmit="placeOrder(event)">
+          <div class="payment-methods">
+            <label class="payment-option selected" id="optCard">
+              <input
+                type="radio"
+                name="payMethod"
+                value="card"
+                checked
+                onchange="selectPayment(this)"
+              />
+              Credit / Debit Card
+            </label>
+            <label class="payment-option" id="optPaypal">
+              <input
+                type="radio"
+                name="payMethod"
+                value="paypal"
+                onchange="selectPayment(this)"
+              />
+              PayPal
+            </label>
+            <label class="payment-option" id="optBank">
+              <input
+                type="radio"
+                name="payMethod"
+                value="bank"
+                onchange="selectPayment(this)"
+              />
+              Bank Transfer
+            </label>
+          </div>
+
+          <div id="cardFields">
+            <input
+              type="text"
+              id="cardNumber"
+              placeholder="Card Number"
+              maxlength="19"
+              oninput="formatCard(this)"
+              required
+            />
+            <div class="form-row">
+              <input
+                type="text"
+                id="cardExpiry"
+                placeholder="MM / YY"
+                maxlength="7"
+                oninput="formatExpiry(this)"
+                required
+              />
+              <input
+                type="text"
+                id="cardCvv"
+                placeholder="CVV"
+                maxlength="4"
+                required
+              />
+            </div>
+            <input
+              type="text"
+              id="cardHolder"
+              placeholder="Cardholder Name"
+              required
+            />
+          </div>
+
+          <div id="paypalFields" class="hidden">
+            <input
+              type="email"
+              id="paypalEmail"
+              placeholder="PayPal Email Address"
+            />
+          </div>
+
+          <div id="bankFields" class="hidden">
+            <p class="bank-info">
+              Transfer the total to:<br /><strong>IBAN:</strong> DE89 3704 0044
+              0532 0130 00<br /><strong>BIC:</strong> COBADEFFXXX<br /><strong
+                >Ref:</strong
+              >
+              Your order number (shown after placing order)
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 0.5rem"
+          >
+            Place Order
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            style="width: 100%; margin-top: 0.5rem"
+            onclick="backToShipping()"
+          >
+            ← Back
+          </button>
+        </form>
+      </div>
+
+      <div class="checkout-step hidden" id="stepConfirm">
+        <div class="confirm-content">
+          <div class="confirm-icon">✓</div>
+          <h2>Order Confirmed!</h2>
+          <p id="confirmMessage"></p>
+          <p class="order-number" id="orderNumber"></p>
+          <button
+            class="btn btn-primary"
+            onclick="closeCheckout()"
+            style="margin-top: 1.5rem"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
