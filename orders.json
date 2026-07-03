@@ -1,0 +1,25 @@
+[
+  {
+    "orderNum": "MM-TEST123",
+    "total": 1199,
+    "items": [
+      {
+        "id": 1,
+        "name": "iPhone 16 Pro",
+        "price": 1199,
+        "qty": 1,
+        "subtotal": 1199
+      }
+    ],
+    "shipping": {
+      "name": "Test User",
+      "email": "test@test.com",
+      "address": "123 Test St",
+      "city": "Berlin",
+      "zip": "10115",
+      "country": "Germany"
+    },
+    "paymentMethod": "card",
+    "createdAt": "2026-07-03T03:23:33.510Z"
+  }
+]
