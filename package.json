@@ -1,0 +1,12 @@
+{
+  "name": "mobimart",
+  "version": "1.0.0",
+  "description": "MobiMart — A simple mobile phone e-commerce web application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
